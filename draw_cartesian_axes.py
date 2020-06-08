@@ -2,7 +2,7 @@ import pygame as pg
 import math
 import os
 import time
-from pygame2dcartesiancoordsystem import Pygame2dCartesianCoordSystem
+from pygame2d import Pygame2d
 
 # define colors
 WHITE = (255, 255, 255)
@@ -68,33 +68,33 @@ cartesianAxesLst = []
 
 if os.name == 'posix':
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(100, 500), xLength=200, yLength=500, xRange=(-5, 15),
+		Pygame2d(screen=screen, origin=(100, 500), xLength=200, yLength=500, xRange=(-5, 15),
 									 yRange=(50, -3)))
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(400, 500), xLength=200, yLength=500, xRange=(-5, 15),
+		Pygame2d(screen=screen, origin=(400, 500), xLength=200, yLength=500, xRange=(-5, 15),
 									 yRange=(20, -50), xLabel='Time', yLabel='Speed'))
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(120, 1100), xLength=200, yLength=500, xRange=(25, 55),
+		Pygame2d(screen=screen, origin=(120, 1100), xLength=200, yLength=500, xRange=(25, 55),
 									 yRange=(50, -3)))
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(420, 1100), xLength=200, yLength=500, xRange=(-55, -5),
+		Pygame2d(screen=screen, origin=(420, 1100), xLength=200, yLength=500, xRange=(-55, -5),
 									 yRange=(50, -3)))
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(780, 1100), xLength=200, yLength=500, xRange=(0, 15),
+		Pygame2d(screen=screen, origin=(780, 1100), xLength=200, yLength=500, xRange=(0, 15),
 									 yRange=(50, 3)))
 #origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK, thickness=2, leftMargin=0, topMargin=0):
 else:
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(80, 300), xLength=200, yLength=300, xRange=(-5, 15),
+		Pygame2d(screen=screen, origin=(80, 300), xLength=200, yLength=300, xRange=(-5, 15),
 									 yRange=(50, -3)))
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(500, 300), xLength=200, yLength=300, xRange=(-5, 15),
+		Pygame2d(screen=screen, origin=(500, 300), xLength=200, yLength=300, xRange=(-5, 15),
 									 yRange=(50, -3), xLabel='Time', yLabel='Speed'))
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(40, 700), xLength=200, yLength=300, xRange=(25, 55),
+		Pygame2d(screen=screen, origin=(40, 700), xLength=200, yLength=300, xRange=(25, 55),
 									 yRange=(50, -3)))
 	cartesianAxesLst.append(
-		Pygame2dCartesianCoordSystem(screen=screen, origin=(550, 720), xLength=200, yLength=300, xRange=(0, 15),
+		Pygame2d(screen=screen, origin=(550, 720), xLength=200, yLength=300, xRange=(0, 15),
 									 yRange=(50, 9)))
 
 while running:

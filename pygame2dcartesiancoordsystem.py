@@ -8,9 +8,8 @@ ARROW_LENGTH = 40
 FONT_SIZE = 35
 
 class Pygame2dCartesianCoordSystem():
-	def __init__(self, screen, origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
-				 thickness=2):
-		self.screen = screen
+	def __init__(self, origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
+				 thickness=2, title=''):
 		self.origin = origin
 		self.xLabel = xLabel
 		self.yLabel = yLabel
@@ -40,17 +39,6 @@ class Pygame2dCartesianCoordSystem():
 		yArrowPoint2 = (self.yAxisCoordStart[0], self.yAxisCoordStart[1])
 		yArrowPoint3 = (self.yAxisCoordStart[0] + ARROW_BASE / 2, self.yAxisCoordStart[1] + ARROW_LENGTH)
 		self.yArrowCoord = (yArrowPoint2, yArrowPoint3, yArrowPoint1)
-		
-		font = pg.font.SysFont(None, FONT_SIZE, bold=True, italic=False)
- 
-		# Render the text. "True" means anti-aliased text.
-		# Black is the color. This creates an image of the
-		# letters, but does not put it on the screen
-		self.xLabelText = font.render(self.xLabel, True, self.color)
-		self.xLabelHorizontalShift = font.size(xLabel)[0]
-		self.yLabelText = font.render(self.yLabel, True, self.color)
-		self.yLabelHorizontalShift = font.size(yLabel)[0] / 2
-		self.originText = font.render("O", True, self.color)
 
 	def computeXAxisCoordinates(self, origin, xAxisLength, xAxisValueRange):
 		"""
@@ -99,16 +87,3 @@ class Pygame2dCartesianCoordSystem():
 		yAxisCoordEnd = (yAxisCoordStart[0], yAxisCoordStart[1] + yLength)
 
 		return yAxisCoordStart, yAxisCoordEnd
-
-	def draw(self):
-		# drawing x axis
-		pg.draw.line(self.screen, self.axesColor, self.xAxisCoordStart, self.xAxisCoordEnd, self.thickness)
-		pg.draw.polygon(self.screen, self.axesColor, self.xArrowCoord)
-		self.screen.blit(self.xLabelText, (self.xAxisCoordEnd[0] - self.xLabelHorizontalShift, self.xAxisCoordEnd[1] + FONT_SIZE / 3))
-		
-		# drawing y axis
-		pg.draw.line(self.screen, self.axesColor, self.yAxisCoordStart, self.yAxisCoordEnd, self.thickness)
-		pg.draw.polygon(self.screen, self.axesColor, self.yArrowCoord)
-		self.screen.blit(self.yLabelText, (self.yAxisCoordStart[0] - self.yLabelHorizontalShift, self.yAxisCoordStart[1] - 4 * FONT_SIZE / 3))
-
-		self.screen.blit(self.originText, (self.origin[0], self.origin[1] - FONT_SIZE))
