@@ -7,11 +7,17 @@ ARROW_LENGTH = 40
 FONT_SIZE = 35
 
 class TwoDCartesianCoordSystem:
+	"""
+	This class has no dependancy on Pygame. So, it can be unit tested more
+	efficiently. It hosts the Cartesian axes computation logic used by its 
+	subclass PygameTwoDCartesianCoordSystem. 
+	"""
 	def __init__(self, origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
-				 thickness=2, title=''):
+				 thickness=2, titleLst=[]):
 		self.origin = origin
 		self.xLabel = xLabel
 		self.yLabel = yLabel
+		self.titleLst = titleLst
 		self.color = color
 		self.thickness = thickness
 

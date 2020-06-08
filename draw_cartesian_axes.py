@@ -68,20 +68,23 @@ cartesianAxesLst = []
 
 if os.name == 'posix':
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(100, 500), xLength=200, yLength=500, xRange=(-5, 15),
-									   yRange=(50, -3)))
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(110, 600), xLength=200, yLength=400, xRange=(-5, 15),
+									   yRange=(50, -3), titleLst=["xR=(-5,15)","yR=(50,-3)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(400, 500), xLength=200, yLength=500, xRange=(-5, 15),
-									   yRange=(20, -50), xLabel='Time', yLabel='Speed'))
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(400, 600), xLength=200, yLength=400, xRange=(-5, 15),
+									   yRange=(30, -40), xLabel='Time', yLabel='Speed', titleLst=["xR=(-5,15)","yR=(30,-40)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(120, 1100), xLength=200, yLength=500, xRange=(25, 55),
-									   yRange=(50, -3)))
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(700, 600), xLength=200, yLength=400, xRange=(0, 15),
+									   yRange=(50, 3), titleLst=["xR=(0,15)","yR=(50,3)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(420, 1100), xLength=200, yLength=500, xRange=(-55, -5),
-									   yRange=(50, -3)))
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(1000, 600), xLength=200, yLength=400, xRange=(25, 55),
+									   yRange=(50, 3), titleLst=["xR=(25,55)","yR=(50,3)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(780, 1100), xLength=200, yLength=500, xRange=(0, 15),
-									   yRange=(50, 3)))
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(250, 1300), xLength=200, yLength=400, xRange=(-55, -5),
+									   yRange=(50, 0), titleLst=["xR=(-55,-5)","yR=(50,0)"]))
+	cartesianAxesLst.append(
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(550, 1300), xLength=200, yLength=400, xRange=(0, 55),
+									   yRange=(-50, -3), titleLst=["xR=(0,55)","yR=(-50,-3)"]))
 #origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK, thickness=2, leftMargin=0, topMargin=0):
 else:
 	cartesianAxesLst.append(
