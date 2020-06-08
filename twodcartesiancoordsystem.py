@@ -1,4 +1,3 @@
-import pygame as pg
 import math
 
 BLACK = (0, 0, 0)
@@ -7,7 +6,7 @@ ARROW_LENGTH = 40
 
 FONT_SIZE = 35
 
-class Pygame2dCartesianCoordSystem():
+class TwoDCartesianCoordSystem:
 	def __init__(self, origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
 				 thickness=2, title=''):
 		self.origin = origin

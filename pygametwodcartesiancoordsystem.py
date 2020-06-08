@@ -1,11 +1,11 @@
 import pygame as pg
 
-from pygame2dcartesiancoordsystem import Pygame2dCartesianCoordSystem
+from twodcartesiancoordsystem import TwoDCartesianCoordSystem
 
 BLACK = (0, 0, 0)
 FONT_SIZE = 35
 
-class Pygame2d(Pygame2dCartesianCoordSystem):
+class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 	def __init__(self, screen, origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
 				 thickness=2, title=''):
 		super().__init__(origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
