@@ -12,7 +12,7 @@ The target platforms are both Windows and Android tablets or smartphones.
 xR and yR mean x and y range respectively. The values are displayed as coord system titles.
 
 <p align="center">
-  <img src="images/09062020.jpg" width="650" title="Current development state">
+  <img src="images/09062020.jpg" width="600" title="Current development state">
 </p>
 
 ### Currently, the Cartesian coord system parameters are
