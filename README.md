@@ -9,4 +9,19 @@ The project architecture separates the computation of the pixel coordinates of t
 The target platforms are both Windows and Android tablets or smartphones.
 
 ## Current development state
+xR and yR means x and y range respectively. The values are displayed as coord system titles.
 ![](images/09062020.jpg)
+
+Currently, the Cartesian coord system parameters are
+
+- Origin coordinates. This positions the axes on the screen.
+- X and Y axes length
+- X and Y axes value range
+- X and Y axes labels
+- axes color and thickness
+- Cartesian coord system multilines title
+
+Will be added
+
+- X and Y axes tick size
+- Grid option
