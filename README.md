@@ -12,7 +12,7 @@ The target platforms are both Windows and Android tablets or smartphones.
 xR and yR means x and y range respectively. The values are displayed as coord system titles.
 ![](images/09062020.jpg)
 
-###Currently, the Cartesian coord system parameters are
+### Currently, the Cartesian coord system parameters are
 
 - Origin coordinates. This positions the axes on the screen.
 - X and Y axes length
