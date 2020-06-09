@@ -9,7 +9,7 @@ The project architecture separates the computation of the pixel coordinates of t
 The target platforms are both Windows and Android tablets or smartphones.
 
 ## Current development state
-xR and yR means x and y range respectively. The values are displayed as coord system titles.
+xR and yR mean x and y range respectively. The values are displayed as coord system titles.
 
 <p align="center">
   <img src="images/09062020.jpg" width="650" title="Current development state">
