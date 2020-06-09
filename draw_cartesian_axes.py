@@ -81,10 +81,10 @@ if os.name == 'posix':
 									   yRange=(50, 3), titleLst=["xR=(25,55)","yR=(50,3)"]))
 	cartesianAxesLst.append(
 		PygameTwoDCartesianCoordSystem(screen=screen, origin=(250, 1300), xLength=200, yLength=400, xRange=(-55, -5),
-									   yRange=(50, 0), titleLst=["xR=(-55,-5)","yR=(50,0)"]))
+									   yRange=(50, 0), xLabel="Loss", titleLst=["xR=(-55,-5)","yR=(50,0)"]))
 	cartesianAxesLst.append(
 		PygameTwoDCartesianCoordSystem(screen=screen, origin=(550, 1300), xLength=200, yLength=400, xRange=(0, 55),
-									   yRange=(-50, -3), titleLst=["xR=(0,55)","yR=(-50,-3)"]))
+									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"]))
 #origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK, thickness=2, leftMargin=0, topMargin=0):
 else:
 	cartesianAxesLst.append(
@@ -101,27 +101,11 @@ else:
 									   yRange=(50, 3), titleLst=["xR=(25,55)","yR=(50,3)"]))
 	cartesianAxesLst.append(
 		PygameTwoDCartesianCoordSystem(screen=screen, origin=(1145, 550), xLength=200, yLength=400, xRange=(-55, -5),
-									   yRange=(50, 0), titleLst=["xR=(-55,-5)","yR=(50,0)"]))
+									   yRange=(50, 0), xLabel="Loss", titleLst=["xR=(-55,-5)","yR=(50,0)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(300, 570), xLength=200, yLength=200, xRange=(0, 55),
-									   yRange=(-50, -3), titleLst=["xR=(0,55)","yR=(-50,-3)"]))
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(300, 555), xLength=200, yLength=200, xRange=(0, 55),
+									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"]))
 
-
-'''
-
-	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(80, 300), xLength=200, yLength=300, xRange=(-5, 15),
-									   yRange=(50, -3)))
-	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(300, 300), xLength=200, yLength=300, xRange=(-5, 15),
-									   yRange=(50, -3), xLabel='Time', yLabel='Speed'))
-	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(40, 700), xLength=200, yLength=300, xRange=(25, 55),
-									   yRange=(50, -3)))
-	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(550, 720), xLength=200, yLength=300, xRange=(0, 15),
-									   yRange=(50, 9)))
-'''
 while running:
 	clock.tick(FPS)
 		
