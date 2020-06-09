@@ -8,7 +8,7 @@ FONT_SIZE = 35
 
 class TwoDCartesianCoordSystem:
 	"""
-	This class has no dependancy on Pygame. So, it can be unit tested more
+	This class has no dependency on Pygame. So, it can be unit tested more
 	efficiently. It hosts the Cartesian axes computation logic used by its 
 	subclass PygameTwoDCartesianCoordSystem. 
 	"""
@@ -27,23 +27,19 @@ class TwoDCartesianCoordSystem:
 		# computing how many pixels correspond to delta y
 		self.yStep = math.floor(yLength / (yRange[0] - yRange[1]))
 
+		# computing the X axis coordinates
 		self.xAxisCoordStart, self.xAxisCoordEnd = self.computeXAxisCoordinates(origin, xLength, xRange)
 
+		# computing the Y axis coordinates
 		self.yAxisCoordStart, self.yAxisCoordEnd = self.computeYAxisCoordinates(origin, yLength, yRange)
 
 		self.axesColor = color
 		
-		# computing x axis arrow coord
-		xArrowPoint1 = (self.xAxisCoordEnd[0] - ARROW_LENGTH, self.xAxisCoordEnd[1] - ARROW_BASE / 2)
-		xArrowPoint2 = (self.xAxisCoordEnd[0], self.xAxisCoordEnd[1])
-		xArrowPoint3 = (self.xAxisCoordEnd[0] - ARROW_LENGTH, self.xAxisCoordEnd[1] + ARROW_BASE / 2)
-		self.xArrowCoord = (xArrowPoint1, xArrowPoint2, xArrowPoint3)
+		# computing X axis arrow coord
+		self.xArrowCoord = self.computeXAxisArrowCoordinates(self.xAxisCoordStart, self.xAxisCoordEnd)
 		
-		# computing y axis arrow coord
-		yArrowPoint1 = (self.yAxisCoordStart[0] - ARROW_BASE / 2, self.yAxisCoordStart[1] + ARROW_LENGTH)
-		yArrowPoint2 = (self.yAxisCoordStart[0], self.yAxisCoordStart[1])
-		yArrowPoint3 = (self.yAxisCoordStart[0] + ARROW_BASE / 2, self.yAxisCoordStart[1] + ARROW_LENGTH)
-		self.yArrowCoord = (yArrowPoint2, yArrowPoint3, yArrowPoint1)
+		# computing Y axis arrow coord
+		self.yArrowCoord = self.computeYAxisArrowCoordinates(self.yAxisCoordStart, self.yAxisCoordEnd)
 
 	def computeXAxisCoordinates(self, origin, xAxisLength, xAxisValueRange):
 		"""
@@ -92,3 +88,27 @@ class TwoDCartesianCoordSystem:
 		yAxisCoordEnd = (yAxisCoordStart[0], yAxisCoordStart[1] + yLength)
 
 		return yAxisCoordStart, yAxisCoordEnd
+
+	def computeXAxisArrowCoordinates(self, xAxisCoordStart, xAxisCoordEnd):
+		if xAxisCoordEnd[0] > xAxisCoordStart[0]:
+			xArrowPoint1 = (xAxisCoordEnd[0] - ARROW_LENGTH, xAxisCoordEnd[1] - ARROW_BASE / 2)
+			xArrowPoint2 = (xAxisCoordEnd[0], xAxisCoordEnd[1])
+			xArrowPoint3 = (xAxisCoordEnd[0] - ARROW_LENGTH, xAxisCoordEnd[1] + ARROW_BASE / 2)
+		else:
+			xArrowPoint1 = (xAxisCoordEnd[0] - ARROW_LENGTH, xAxisCoordEnd[1] - ARROW_BASE / 2)
+			xArrowPoint2 = (xAxisCoordEnd[0], xAxisCoordEnd[1])
+			xArrowPoint3 = (xAxisCoordEnd[0] - ARROW_LENGTH, xAxisCoordEnd[1] + ARROW_BASE / 2)
+
+		return (xArrowPoint1, xArrowPoint2, xArrowPoint3)
+
+	def computeYAxisArrowCoordinates(self, yAxisCoordStart, yAxisCoordEnd):
+		if yAxisCoordStart[0] > yAxisCoordEnd[0]:
+			yArrowPoint1 = (yAxisCoordStart[0] - ARROW_BASE / 2, yAxisCoordStart[1] + ARROW_LENGTH)
+			yArrowPoint2 = (yAxisCoordStart[0], yAxisCoordStart[1])
+			yArrowPoint3 = (yAxisCoordStart[0] + ARROW_BASE / 2, yAxisCoordStart[1] + ARROW_LENGTH)
+		else:
+			yArrowPoint1 = (yAxisCoordStart[0] - ARROW_BASE / 2, yAxisCoordStart[1] + ARROW_LENGTH)
+			yArrowPoint2 = (yAxisCoordStart[0], yAxisCoordStart[1])
+			yArrowPoint3 = (yAxisCoordStart[0] + ARROW_BASE / 2, yAxisCoordStart[1] + ARROW_LENGTH)
+
+		return (yArrowPoint1, yArrowPoint2, yArrowPoint3)
