@@ -1,4 +1,4 @@
-# Pygame_2d_Cartesian_coordinates_system
+# Pygame 2d Cartesian coordinates system
 This project creates a 2d Cartesian coordinates system in Pygame. The objective is to offer a base for further development of interactive mathematics.
 
 The project architecture differentiate the computation of the pixel coordinates of the axes components from their drawing by Pygame. This has two advantages:
@@ -7,3 +7,6 @@ The project architecture differentiate the computation of the pixel coordinates 
 - It will be possible to replace Pygame by another interactive app framework.
 
 The target platform are both Windows and Android tablets or smartphones.
+
+## Current state
+![](images/09062020.jpg)
