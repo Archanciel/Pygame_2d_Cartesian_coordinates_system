@@ -10,10 +10,9 @@ The target platforms are both Windows and Android tablets or smartphones.
 
 ## Current development state
 xR and yR means x and y range respectively. The values are displayed as coord system titles.
-![](images/09062020.jpg)
 
 <p align="center">
-  <img src="images/09062020.jpg" width="350" title="hover text">
+  <img src="images/09062020.jpg" width="650" title="Current development state">
 </p>
 
 ### Currently, the Cartesian coord system parameters are
