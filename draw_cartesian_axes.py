@@ -36,6 +36,7 @@ background_color = WHITE
 pg.init()
 
 if os.name == 'posix':
+	# Android device
 	(width, height) = (1600, 2560)
 	screen = pg.display.set_mode((width, height), pg.FULLSCREEN)
 else:
@@ -55,6 +56,7 @@ screen.fill(background_color)
 cartesianAxesLst = []
 
 if os.name == 'posix':
+	# Android device
 	cartesianAxesLst.append(
 		PygameTwoDCartesianCoordSystem(screen=screen, origin=(110, 600), xLength=200, yLength=400, xRange=(-5, 15),
 									   yRange=(50, -3), titleLst=["xR=(-5,15)","yR=(50,-3)"]))
@@ -115,6 +117,5 @@ while running:
 		cartesianAxes.draw()
 	
 	pg.display.flip()
-
 		
 pg.quit()

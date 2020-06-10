@@ -1,3 +1,5 @@
+import os
+
 # colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -26,3 +28,9 @@ QUADRANT_1 = 1
 QUADRANT_2 = 2
 QUADRANT_3 = 3
 QUADRANT_4 = 4
+
+if os.name == 'posix':
+	# Android device
+	ORIGIN_VERTICAL_POS_CORRECTION = 1
+else:
+	ORIGIN_VERTICAL_POS_CORRECTION = 1.7

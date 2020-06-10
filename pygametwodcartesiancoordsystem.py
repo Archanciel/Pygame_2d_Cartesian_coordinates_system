@@ -37,10 +37,10 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 		
 		if originLabelQuadrant == QUADRANT_1:
 			self.originLabelX = self.origin[0]
-			self.originLabelY = self.origin[1] - FONT_SIZE
+			self.originLabelY = self.origin[1] - FONT_SIZE / ORIGIN_VERTICAL_POS_CORRECTION
 		elif originLabelQuadrant == QUADRANT_2:
 			self.originLabelX = self.origin[0] - font.size(ORIGIN_LABEL)[0]
-			self.originLabelY = self.origin[1] - FONT_SIZE
+			self.originLabelY = self.origin[1] - FONT_SIZE / ORIGIN_VERTICAL_POS_CORRECTION
 		elif originLabelQuadrant == QUADRANT_3:
 			self.originLabelX = self.origin[0] - font.size(ORIGIN_LABEL)[0]
 			self.originLabelY = self.origin[1]
