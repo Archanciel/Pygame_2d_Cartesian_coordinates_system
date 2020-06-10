@@ -41,6 +41,7 @@ class TwoDCartesianCoordSystem:
 		
 		# computing Y axis label x coord and Y axis arrow direction
 		self.yAxisLabelYCoordAndDirection = self.computeYAxisLabelXCoordAndDirection(self.origin, self.yAxisCoordStart)
+		#print("origin ", self.origin, " xAxisCoordEnd", self.xAxisCoordEnd, " yAxisCoordStart", self.yAxisCoordStart)  		
 
 	def computeXAxisCoordinates(self, origin, xAxisLength, xAxisValueRange):
 		"""
@@ -131,6 +132,7 @@ class TwoDCartesianCoordSystem:
 			return (origin[0], -1)
 
 	def computeOriginLabelPosition(self, origin, xAxisCoordEnd, yAxisCoordStart):
+		
 		if xAxisCoordEnd[0] > origin[0]:
 			if yAxisCoordStart[1] < origin[1]:
 				return QUADRANT_1

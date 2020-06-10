@@ -180,32 +180,35 @@ class TestTwoDCartesianCoordSystem(unittest.TestCase):
 		self.assertEqual((300, -1), ccs.computeYAxisLabelXCoordAndDirection(origin, (300, 570)))
 
 	def testComputeOriginLabelPositionFirstQuadrant(self):
+		print("testComputeOriginLabelPositionFirstQuadrant")
 		origin = (80, 400)
 		ccs = TwoDCartesianCoordSystem(origin, xLength=200, yLength=300, xRange=(-5, 15),
 									   yRange=(50, -3), titleLst=["xR=(-5,15)", "yR=(50,3)"])
 									   
-		self.assertEqual(1, ccs.computeOriginLabelPosition(origin, (260, 400), (260, 350)))
+		self.assertEqual(1, ccs.computeOriginLabelPosition(origin, (230, 400), (80, 150)))
 
 	def testComputeOriginLabelPositionSecondQuadrant(self):
-		origin = (80, 400)
-		ccs = TwoDCartesianCoordSystem(origin, xLength=200, yLength=300, xRange=(-5, 15),
-									   yRange=(50, -3), titleLst=["xR=(-5,15)", "yR=(50,3)"])
+		print("testComputeOriginLabelPositionSecondQuadrant")
+		origin = (250, 1300)
+		ccs = TwoDCartesianCoordSystem(origin, xLength=200, yLength=400, xRange=(-55, -5),
+									   yRange=(50, 0), xLabel="Loss", titleLst=["xR=(-55,-5)","yR=(50,0)"])
 									   
-		self.assertEqual(1, ccs.computeOriginLabelPosition(origin, (260, 400), (260, 350)))
+		self.assertEqual(2, ccs.computeOriginLabelPosition(origin, (250, 1300), (250, 900)))
 
-	def testComputeOriginLabelPositionSecondQuadrant(self):
-		origin = (80, 400)
-		ccs = TwoDCartesianCoordSystem(origin, xLength=200, yLength=300, xRange=(-5, 15),
-									   yRange=(50, -3), titleLst=["xR=(-5,15)", "yR=(50,3)"])
+	def testComputeOriginLabelPositionThirdQuadrant(self):
+		print("testComputeOriginLabelPositionThirdQuadrant")
+		origin = (1000, 1300)
+		ccs = TwoDCartesianCoordSystem(origin, xLength=200, yLength=400, xRange=(-55, -5),
+									   yRange=(-50, -3), xLabel="Loss", yLabel="Depth", titleLst=["xR=(-55,-5)","yR=(-50,-3)"])
 									   
-		self.assertEqual(1, ccs.computeOriginLabelPosition(origin, (260, 400), (260, 350)))
+		self.assertEqual(3, ccs.computeOriginLabelPosition(origin, (1000, 1300), (1000, 1300)))
 
-	def testComputeOriginLabelPositionSecondQuadrant(self):
-		origin = (80, 400)
-		ccs = TwoDCartesianCoordSystem(origin, xLength=200, yLength=300, xRange=(-5, 15),
-									   yRange=(50, -3), titleLst=["xR=(-5,15)", "yR=(50,3)"])
-									   
-		self.assertEqual(1, ccs.computeOriginLabelPosition(origin, (260, 400), (260, 350)))
+	def testComputeOriginLabelPositionFourthQuadrant(self):
+		print("testComputeOriginLabelPositionFourthQuadrant")
+		origin = (550, 1300)
+		ccs = TwoDCartesianCoordSystem(origin, xLength=200, yLength=400, xRange=(0, 55),
+									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"])									   
+		self.assertEqual(4, ccs.computeOriginLabelPosition(origin, (750, 1300), (550, 1300)))
 		
 		
 if __name__ == '__main__':
