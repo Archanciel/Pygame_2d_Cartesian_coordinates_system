@@ -3,19 +3,7 @@ import math
 import os
 import time
 from pygametwodcartesiancoordsystem import PygameTwoDCartesianCoordSystem
-
-# define colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0)
-CYAN = (2, 255, 255)
-MAGENTA = (255, 0, 255)
-ORANGE = (255, 165, 0)
-
-FPS = 10
+from constants import *
 
 def handleDoubleClick():
 	global timerDC
@@ -85,6 +73,9 @@ if os.name == 'posix':
 	cartesianAxesLst.append(
 		PygameTwoDCartesianCoordSystem(screen=screen, origin=(550, 1300), xLength=200, yLength=400, xRange=(0, 55),
 									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"]))
+	cartesianAxesLst.append(
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(1000, 1300), xLength=200, yLength=400, xRange=(-55, -5),
+									   yRange=(-50, -3), xLabel="Loss", yLabel="Depth", titleLst=["xR=(-55,-5)","yR=(-50,-3)"]))
 #origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK, thickness=2, leftMargin=0, topMargin=0):
 else:
 	cartesianAxesLst.append(
@@ -105,6 +96,9 @@ else:
 	cartesianAxesLst.append(
 		PygameTwoDCartesianCoordSystem(screen=screen, origin=(300, 555), xLength=200, yLength=200, xRange=(0, 55),
 									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"]))
+	cartesianAxesLst.append(
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(720, 555), xLength=200, yLength=400, xRange=(-55, -5),
+									   yRange=(-50, -3), xLabel="Loss", yLabel="Depth", titleLst=["xR=(-55,-5)","yR=(-50,-3)"]))
 
 while running:
 	clock.tick(FPS)
