@@ -1,8 +1,5 @@
 import math
-
-BLACK = (0, 0, 0)
-ARROW_BASE = 30
-ARROW_LENGTH = 40
+from constants import *
 
 class TwoDCartesianCoordSystem:
 	"""
@@ -132,3 +129,16 @@ class TwoDCartesianCoordSystem:
 			return (origin[0], 1)
 		else:
 			return (origin[0], -1)
+
+	def computeOriginLabelPosition(self, origin, xAxisCoordEnd, yAxisCoordStart):
+		if xAxisCoordEnd[0] > origin[0]:
+			if yAxisCoordStart[1] < origin[1]:
+				return QUADRANT_1
+			else:
+				return QUADRANT_4
+		else:
+			if yAxisCoordStart[1] < origin[1]:
+				return QUADRANT_2
+			else:
+				return QUADRANT_3
+		

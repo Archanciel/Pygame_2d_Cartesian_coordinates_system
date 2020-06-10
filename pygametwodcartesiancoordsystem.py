@@ -1,10 +1,7 @@
 import pygame as pg
 
 from twodcartesiancoordsystem import TwoDCartesianCoordSystem
-
-BLACK = (0, 0, 0)
-FONT_TITLE_SIZE = 32
-FONT_SIZE = 28
+from constants import *
 
 class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 	"""
@@ -12,7 +9,7 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 	the Pygame Font related logic.
 	"""
 	def __init__(self, screen, origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
-				 thickness=2, titleLst=[]):
+				 thickness=3, titleLst=[]):
 		super().__init__(origin, xLength, yLength, xRange, yRange, xLabel, yLabel, color,
 				 thickness, titleLst)
 
@@ -35,8 +32,21 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 			# Y axis arrow direction is pointing to bottom
 			self.yLabelVerticalShift = self.yAxisCoordEnd[1] + FONT_SIZE / 3
 			
-		self.originText = font.render("O", True, self.color)
-		self.originVerticalShift = self.origin[1] - FONT_SIZE
+		self.originText = font.render(ORIGIN_LABEL, True, self.color)
+		originLabelQuadrant = self.computeOriginLabelPosition(self.origin, self.xAxisCoordEnd, self.yAxisCoordStart)
+		
+		if originLabelQuadrant == QUADRANT_1:
+			self.originLabelX = self.origin[0]
+			self.originLabelY = self.origin[1] - FONT_SIZE
+		elif originLabelQuadrant == QUADRANT_2:
+			self.originLabelX = self.origin[0] - font.size(ORIGIN_LABEL)[0]
+			self.originLabelY = self.origin[1] - FONT_SIZE
+		elif originLabelQuadrant == QUADRANT_3:
+			self.originLabelX = self.origin[0] - font.size(ORIGIN_LABEL)[0]
+			self.originLabelY = self.origin[1]
+		elif originLabelQuadrant == QUADRANT_4:
+			self.originLabelX = self.origin[0]
+			self.originLabelY = self.origin[1]
 
 		fontTitle = pg.font.SysFont(None, FONT_TITLE_SIZE, bold=True, italic=False)
 
@@ -75,7 +85,7 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 
 		# drawing origin
 		self.screen.blit(self.originText, 
-						(self.origin[0], self.originVerticalShift))
+						(self.originLabelX, self.originLabelY))
 						
 		# drawing title
 		i = len(self.titleTextLst)
