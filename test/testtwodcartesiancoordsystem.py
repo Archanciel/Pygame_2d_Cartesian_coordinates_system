@@ -36,6 +36,13 @@ class TestTwoDCartesianCoordSystem(unittest.TestCase):
 		self.assertEqual((945, 550), ccs.xAxisCoordStart)
 		self.assertEqual((1145, 550), ccs.xAxisCoordEnd)
 
+	def testComputeXAxisCoordinates_X_neg_X_zero(self):
+		ccs = TwoDCartesianCoordSystem(origin=(1145, 550), xLength=200, yLength=400,
+										   xRange=(-55, 0), yRange=(50, 0), titleLst=["xR=(-55,0)", "yR=(50,0)"])
+
+		self.assertEqual((945, 550), ccs.xAxisCoordStart)
+		self.assertEqual((1145, 550), ccs.xAxisCoordEnd)
+
 	def testComputeYAxisCoordinates_Y_pos_Y_neg(self):
 		ccs = TwoDCartesianCoordSystem(origin=(300, 255), xLength=200, yLength=300, xRange=(-5, 15),
 									   yRange=(30, -40), xLabel='Time', yLabel='Speed',

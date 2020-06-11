@@ -56,7 +56,7 @@ class TwoDCartesianCoordSystem:
 		:return: xAxisCoordStart and xAxisCoordEnd tuples
 		"""
 		if xAxisValueRange[0] < 0:
-			if xAxisValueRange[1] < 0:
+			if xAxisValueRange[1] <= 0:
 				xAxisCoordStart = (origin[0] - xAxisLength, origin[1])
 			else:
 				xAxisCoordStart = (origin[0] - abs(xAxisValueRange[0] * self.xStep), origin[1])
