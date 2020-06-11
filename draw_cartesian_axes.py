@@ -93,13 +93,19 @@ else:
 		PygameTwoDCartesianCoordSystem(screen=screen, origin=(720, 400), xLength=200, yLength=270, xRange=(25, 55),
 									   yRange=(50, 3), titleLst=["xR=(25,55)","yR=(50,3)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(1145, 550), xLength=200, yLength=400, xRange=(-55, -5),
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(1145, 400), xLength=200, yLength=300, xRange=(-55, -5),
 									   yRange=(50, 0), xLabel="Loss", titleLst=["xR=(-55,-5)","yR=(50,0)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(300, 555), xLength=200, yLength=200, xRange=(0, 55),
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(80, 555), xLength=200, yLength=200, xRange=(0, 55),
 									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"]))
 	cartesianAxesLst.append(
-		PygameTwoDCartesianCoordSystem(screen=screen, origin=(720, 555), xLength=200, yLength=200, xRange=(-55, -5),
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(500, 555), xLength=200, yLength=200, xRange=(-55, -5),
+									   yRange=(-50, -3), xLabel="Loss", yLabel="Depth", titleLst=["xR=(-55,-5)","yR=(-50,-3)"]))
+	cartesianAxesLst.append(
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(660, 555), xLength=200, yLength=200, xRange=(0, 55),
+									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"]))
+	cartesianAxesLst.append(
+		PygameTwoDCartesianCoordSystem(screen=screen, origin=(1085, 555), xLength=200, yLength=200, xRange=(-55, -5),
 									   yRange=(-50, -3), xLabel="Loss", yLabel="Depth", titleLst=["xR=(-55,-5)","yR=(-50,-3)"]))
 
 while running:
