@@ -20,17 +20,18 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 		# Render the text. "True" means anti-aliased text. This creates 
 		# an image of the text, but does not put it on the screen
 		self.xLabelText = font.render(self.xLabel, True, self.color)
-		self.xLabelHorizontalShift = font.size(xLabel)[0]
-		self.xLabelVerticalShift = self.xAxisCoordEnd[1] + FONT_SIZE / 3
+		self.xLabelWidth, xLabelHeight = font.size(xLabel)
+		self.xLabelVerticalShift = self.xAxisCoordEnd[1] + xLabelHeight / 3
 		self.yLabelText = font.render(self.yLabel, True, self.color)
-		self.yLabelHorizontalShift = font.size(yLabel)[0] / 2
+		yLabelWidth, yLabelHeight = font.size(yLabel)
+		self.yLabelHorizontalShift = yLabelWidth / 2
 		
 		if self.yAxisLabelYCoordAndDirection[1] > 0:
 			# Y axis arrow direction is pointing to top
-			self.yLabelVerticalShift = self.yAxisCoordStart[1] - 4 * FONT_SIZE / 3
+			self.yLabelVerticalShift = self.yAxisCoordStart[1] - yLabelHeight
 		else:
 			# Y axis arrow direction is pointing to bottom
-			self.yLabelVerticalShift = self.yAxisCoordEnd[1] + FONT_SIZE / 3
+			self.yLabelVerticalShift = self.yAxisCoordEnd[1]
 			
 		self.originText = font.render(ORIGIN_LABEL, True, self.color)
 		originLabelQuadrant = self.computeOriginLabelPosition(self.origin, self.xAxisCoordEnd, self.yAxisCoordStart)
@@ -49,17 +50,21 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 			self.originLabelY = self.origin[1]
 
 		fontTitle = pg.font.SysFont(None, FONT_TITLE_SIZE, bold=True, italic=False)
-
-		self.titleTextLst = []
+		
+		if originLabelQuadrant == QUADRANT_1 or originLabelQuadrant == QUADRANT_2:
+			self.titleYCoord = self.yLabelVerticalShift - yLabelHeight * 1.5
+		else:
+			self.titleYCoord = self.yAxisCoordStart[1] - yLabelHeight * 1.8
+	
+		self.titleSurfaceLst = []
 		self.titleHorizontalShiftLst = []
-		self.titleYCoord = self.yAxisCoordStart[1] - 2.7 * FONT_SIZE
 		
 		for title in self.titleLst:
-			self.titleTextLst.append(fontTitle.render(title, True, self.color))
+			self.titleSurfaceLst.append(fontTitle.render(title, True, self.color))
 			self.titleHorizontalShiftLst.append(fontTitle.size(title)[0] / 2)
 
 	def draw(self):
-		# drawing x axis
+		# drawing I axis
 		
 		pg.draw.line(self.screen, self.axesColor, self.xAxisCoordStart, self.xAxisCoordEnd, self.thickness)
 		pg.draw.polygon(self.screen, self.axesColor, self.xArrowCoord)
@@ -67,13 +72,13 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 		if self.xAxisLabelXCoordAndDirection[1] > 0:
 			# X axis arrow direction is pointing to right
 			self.screen.blit(self.xLabelText,
-							 (self.xAxisLabelXCoordAndDirection[0] - self.xLabelHorizontalShift, self.xLabelVerticalShift))
+							 (self.xAxisLabelXCoordAndDirection[0] - self.xLabelWidth, self.xLabelVerticalShift))
 		else:
 			#  X axis arrow direction is pointing to left
 			self.screen.blit(self.xLabelText,
 							 (self.xAxisLabelXCoordAndDirection[0], self.xLabelVerticalShift))
 
-		# drawing y axis
+		# drawing Y axis
 		
 		pg.draw.line(self.screen, self.axesColor, self.yAxisCoordStart, self.yAxisCoordEnd, self.thickness)
 		pg.draw.polygon(self.screen, self.axesColor, self.yArrowCoord)
@@ -88,11 +93,11 @@ class PygameTwoDCartesianCoordSystem(TwoDCartesianCoordSystem):
 						(self.originLabelX, self.originLabelY))
 						
 		# drawing title
-		i = len(self.titleTextLst)
+		i = len(self.titleSurfaceLst)
 		titleYCoord = self.titleYCoord
 		
-		for titleText in reversed(self.titleTextLst):
-			self.screen.blit(titleText,
+		for titleSurface in reversed(self.titleSurfaceLst):
+			self.screen.blit(titleSurface,
 							(self.yAxisCoordStart[0] - self.titleHorizontalShiftLst[i - 1], titleYCoord))
 			i -= 1
 			titleYCoord -= FONT_TITLE_SIZE
