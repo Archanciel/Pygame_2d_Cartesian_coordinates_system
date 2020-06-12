@@ -143,4 +143,25 @@ class TwoDCartesianCoordSystem:
 				return QUADRANT_2
 			else:
 				return QUADRANT_3
+
+	def computeNegTicks(self, tickSize, minValue):
+ 	   return [x for x in range(-tickSize, minValue - int(tickSize / 2), -tickSize)]
+
+	def computePosTicks(self, tickSize, maxValue):
+	    return [x for x in range(tickSize, maxValue + int(tickSize / 2), tickSize)]
+
+	def computeXAxisTicks(self, tickValues, xRange):
+		negTicks = self.computeNegTicks(tickValues[0], xRange[0])
+		negTicks.reverse()
+		posTicks = self.computePosTicks(tickValues[0], xRange[1])
+	
+		return negTicks + posTicks
+	
+	def computeYAxisTicks(self, tickValues, yRange):
+		negTicks = self.computeNegTicks(tickValues[1], yRange[1])
+		negTicks.reverse()
+		posTicks = self.computePosTicks(tickValues[1], yRange[0])
+	
+		return negTicks + posTicks
+	
 		

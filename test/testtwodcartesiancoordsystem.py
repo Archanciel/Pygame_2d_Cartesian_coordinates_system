@@ -217,6 +217,95 @@ class TestTwoDCartesianCoordSystem(unittest.TestCase):
 									   yRange=(-50, -3), yLabel="Depth", titleLst=["xR=(0,55)","yR=(-50,-3)"])									   
 		self.assertEqual(4, ccs.computeOriginLabelPosition(origin, (750, 1300), (550, 1300)))
 		
+	def testComputeXTicks_X_neg_X_pos_limits_equal_tick(self):
+		xRange = (-4, 6)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
 		
+		self.assertEqual([-4, -2, 2, 4, 6], ccs.computeXAxisTicks(ticks, xRange))
+		
+	def testComputeXTicks_X_neg_X_pos_limits_diff_tick(self):
+		xRange = (-5, 7)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([-4, -2, 2, 4, 6], ccs.computeXAxisTicks(ticks, xRange))
+		
+	def testComputeXTicks_X_zero_X_pos_limits_equal_tick(self):
+		xRange = (0, 6)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([2, 4, 6], ccs.computeXAxisTicks(ticks, xRange))
+		
+	def testComputeXTicks_X_zero_X_pos_limits_diff_tick(self):
+		xRange = (0, 7)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([2, 4, 6], ccs.computeXAxisTicks(ticks, xRange))		
+		
+	def testComputeXTicks_X_neg_X_zero_limits_diff_tick(self):
+		xRange = (-7, 0)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([-6, -4, -2], ccs.computeXAxisTicks(ticks, xRange))		
+		
+	def testComputeXTicks_X_neg_X_zero_limits_equal_tick(self):
+		xRange = (-6, 0)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([-6, -4, -2], ccs.computeXAxisTicks(ticks, xRange))		
+
+	def testComputeXTicks_X_neg_X_neg_limits_diff_tick(self):
+		xRange = (-9, -3)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([-8, -6, -4], ccs.computeXAxisTicks(ticks, xRange))		
+		
+	def testComputeXTicks_X_neg_X_neg_limits_equal_tick(self):
+		xRange = (-9, -4)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([-8, -6, -4], ccs.computeXAxisTicks(ticks, xRange))		
+
+	def testComputeXTicks_X_pos_X_pos_limits_diff_tick(self):
+		xRange = (3, 9)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([4, 6, 8], ccs.computeXAxisTicks(ticks, xRange))		
+		
+	def testComputeXTicks_X_pos_X_pos_limits_equal_tick(self):
+		xRange = (2, 6)
+		yRange = (7, -7)
+		ticks = (2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([2, 4, 6], ccs.computeXAxisTicks(ticks, xRange))		
+				
 if __name__ == '__main__':
 	unittest.main()
