@@ -153,7 +153,6 @@ class TwoDCartesianCoordSystem:
 	def computeXAxisTicks(self, tickValues, xRange):
 		negTicks = self.computeNegTicks(tickValues[0], xRange[0])
 		negTicks.reverse()
-
 		lastTickIdx = len(negTicks) - 1
 
 		if lastTickIdx >= 0 and negTicks[lastTickIdx] > xRange[1]:
@@ -164,7 +163,7 @@ class TwoDCartesianCoordSystem:
 
 		posTicks = self.computePosTicks(tickValues[0], xRange[1])
 
-		if len(posTicks) >= 0 and posTicks[0] < xRange[0]:
+		if len(posTicks) > 0 and posTicks[0] < xRange[0]:
 			# if the first positive tick is smaller than the min x range value, it is
 			# removed from the list. This is the case if for example xRange == [3, 9]
 			# with a x tick value of 2
@@ -174,21 +173,20 @@ class TwoDCartesianCoordSystem:
 	
 	def computeYAxisTicks(self, tickValues, yRange):
 		negTicks = self.computeNegTicks(tickValues[1], yRange[1])
-		negTicks.reverse()
 
-		lastTickIdx = len(negTicks) - 1
-
-		if lastTickIdx >= 0 and negTicks[len(negTicks) - 1] > yRange[0]:
-			# if the last negative tick is greater than the max y range value, it is
-			# removed from the list. This is the case if yRange == [-3, -9] with a
-			# x tick value of 2
-			negTicks = negTicks[:-1]
+		if len(negTicks) > 0 and negTicks[0] > yRange[0]:
+			# if the first negative tick is greater than the min y range value, it is
+			# removed from the list. This is the case if for example yRange == [-4, -10]
+			# with a y tick value of 3
+			negTicks = negTicks[1:]
 
 		posTicks = self.computePosTicks(tickValues[1], yRange[0])
+		posTicks.reverse()
+		lastTickIdx = len(posTicks) - 1
 
-		if len(posTicks) >= 0 and posTicks[0] > yRange[1]:
-			posTicks = posTicks[1:]
+		if lastTickIdx >= 0 and posTicks[lastTickIdx] < yRange[1]:
+			posTicks = posTicks[:-1]
 
-		return negTicks + posTicks
+		return posTicks + negTicks
 	
 		
