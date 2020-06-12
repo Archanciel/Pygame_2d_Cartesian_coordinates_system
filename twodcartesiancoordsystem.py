@@ -9,6 +9,21 @@ class TwoDCartesianCoordSystem:
 	"""
 	def __init__(self, origin, xLength, yLength, xRange, yRange, xLabel='X', yLabel='Y', color=BLACK,
 				 thickness=2, titleLst=[]):
+		'''
+
+		:param origin:
+		:param xLength:
+		:param yLength:
+		:param xRange:	tuple containing the min and max X axis values (values are provided from left
+						to right. Ex: (-25, -3), (-30, 45), (0, 75), (12, 125).
+		:param yRange:	tuple containing the max and min Y axis values (values are provided from top
+						to bottom. Ex: (25, 3), (30, -45), (75, 0),  (0, -50), (-12, -125).
+		:param xLabel:
+		:param yLabel:
+		:param color:
+		:param thickness:
+		:param titleLst:
+		'''
 		self.origin = origin
 		self.xLabel = xLabel
 		self.yLabel = yLabel
