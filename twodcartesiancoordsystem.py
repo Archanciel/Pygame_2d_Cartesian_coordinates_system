@@ -145,23 +145,50 @@ class TwoDCartesianCoordSystem:
 				return QUADRANT_3
 
 	def computeNegTicks(self, tickSize, minValue):
- 	   return [x for x in range(-tickSize, minValue - int(tickSize / 2), -tickSize)]
+		return [x for x in range(-tickSize, minValue - int(tickSize / 2), -tickSize)]
 
 	def computePosTicks(self, tickSize, maxValue):
-	    return [x for x in range(tickSize, maxValue + int(tickSize / 2), tickSize)]
+		return [x for x in range(tickSize, maxValue + int(tickSize / 2), tickSize)]
 
 	def computeXAxisTicks(self, tickValues, xRange):
 		negTicks = self.computeNegTicks(tickValues[0], xRange[0])
 		negTicks.reverse()
+
+		lastTickIdx = len(negTicks) - 1
+
+		if lastTickIdx >= 0 and negTicks[lastTickIdx] > xRange[1]:
+			# if the last negative tick is greater than the max x range value, it is
+			# removed from the list. This is the case if for example xRange == [-9, -3]
+			# with a x tick value of 2
+			negTicks = negTicks[:-1]
+
 		posTicks = self.computePosTicks(tickValues[0], xRange[1])
-	
+
+		if len(posTicks) >= 0 and posTicks[0] < xRange[0]:
+			# if the first positive tick is smaller than the min x range value, it is
+			# removed from the list. This is the case if for example xRange == [3, 9]
+			# with a x tick value of 2
+			posTicks = posTicks[1:]
+
 		return negTicks + posTicks
 	
 	def computeYAxisTicks(self, tickValues, yRange):
 		negTicks = self.computeNegTicks(tickValues[1], yRange[1])
 		negTicks.reverse()
+
+		lastTickIdx = len(negTicks) - 1
+
+		if lastTickIdx >= 0 and negTicks[len(negTicks) - 1] > yRange[0]:
+			# if the last negative tick is greater than the max y range value, it is
+			# removed from the list. This is the case if yRange == [-3, -9] with a
+			# x tick value of 2
+			negTicks = negTicks[:-1]
+
 		posTicks = self.computePosTicks(tickValues[1], yRange[0])
-	
+
+		if len(posTicks) >= 0 and posTicks[0] > yRange[1]:
+			posTicks = posTicks[1:]
+
 		return negTicks + posTicks
 	
 		
