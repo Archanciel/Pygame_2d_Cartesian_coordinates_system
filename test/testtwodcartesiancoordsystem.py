@@ -419,6 +419,7 @@ class TestTwoDCartesianCoordSystem(unittest.TestCase):
 		self.assertEqual([6, 3], ccs.computeYAxisTicks(ticks, yRange))
 		
 	def testComputeNegTicksFloat(self):
+		# still failing
 		xRange = (-0.4, 0.6)
 		yRange = (7, -7)
 		ticks = (0.2, 3)
@@ -430,6 +431,7 @@ class TestTwoDCartesianCoordSystem(unittest.TestCase):
 		self.assertEqual([-0.4, -0.2], ccs.computeNegTicks(tickSize, minValue))
 		
 	def testComputeXTicksFloat_X_neg_X_pos_limits_equal_tick(self):
+		# still failing
 		xRange = (-0.4, 0.6)
 		yRange = (7, -7)
 		ticks = (0.2, 3)
