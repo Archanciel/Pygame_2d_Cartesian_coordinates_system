@@ -417,6 +417,26 @@ class TestTwoDCartesianCoordSystem(unittest.TestCase):
 		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
 		
 		self.assertEqual([6, 3], ccs.computeYAxisTicks(ticks, yRange))
+		
+	def testComputeNegTicksFloat(self):
+		xRange = (-0.4, 0.6)
+		yRange = (7, -7)
+		ticks = (0.2, 3)
+		minValue = xRange[0]
+		tickSize = ticks[0]
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([-0.4, -0.2], ccs.computeNegTicks(tickSize, minValue))
+		
+	def testComputeXTicksFloat_X_neg_X_pos_limits_equal_tick(self):
+		xRange = (-0.4, 0.6)
+		yRange = (7, -7)
+		ticks = (0.2, 3)
+		origin = (80, 400)
+		ccs = TwoDCartesianCoordSystem(origin, 200, 300, xRange, yRange)
+		
+		self.assertEqual([-0.4, -0.2, 0.2, 0.4, 0.6], ccs.computeXAxisTicks(ticks, xRange))
 				
 if __name__ == '__main__':
 	unittest.main()
